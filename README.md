@@ -10,7 +10,7 @@ This table illustrates which APIs and versions are currently covered by this pac
 |-------------------------------|-------------|---------------------|
 | A+ Content API                | -           | Not yet implemented |
 | Authorization API             | -           | Not yet implemented |
-| Catalog Items API             | v2022-04-01 | Fully supported     |
+| Catalog Items API             | -           | Not yet implemented |
 | Easy Ship API                 | -           | Not yet implemented |
 | Fulfillment By Amazon API     | -           | Not yet implemented |
 | Feeds API                     | -           | Not yet implemented |
