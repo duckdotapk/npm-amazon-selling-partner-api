@@ -1,0 +1,33 @@
+{
+  "name": "@lorenstuff/amazon-selling-partner-api",
+  "version": "1.0.0",
+  "description": "A package for interacting with the Amazon Selling Partner API.",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "npx rimraf lib && npx tsc",
+    "lint": "eslint . -c ./.eslintrc.cjs",
+    "lint-fix": "eslint . -c ./.eslintrc.cjs --fix",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "amazon",
+    "sp",
+    "api",
+    "selling",
+    "partner",
+    "api",
+    "api"
+  ],
+  "author": "Loren Goodwin",
+  "license": "MIT",
+  "dependencies": {
+    "@types/luxon": "^3.3.0",
+    "@types/node": "^20.3.1",
+    "luxon": "^3.3.0"
+  },
+  "devDependencies": {
+    "@donutteam/eslint-config": "^2.0.0",
+    "eslint": "^8.43.0",
+    "typescript": "^5.1.3"
+  }
+}
