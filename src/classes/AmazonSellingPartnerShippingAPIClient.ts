@@ -21,7 +21,7 @@ import
 	PurchaseShipmentResponse,
 	RetrieveShippingLabelRequest,
 	RetrieveShippingLabelResponse,
-} from "../types/amazon-selling-partner-api/shipping-api/v1.js";
+} from "../types/shipping-api/v1.js";
 
 //
 // Class

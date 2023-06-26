@@ -23,7 +23,7 @@ import
 	UpdateShipmentStatusRequest,
 	UpdateVerificationStatusErrorResponse,
 	UpdateVerificationStatusRequest,
-} from "../types/amazon-selling-partner-api/orders-api/v0.js";
+} from "../types/orders-api/v0.js";
 
 //
 // Class

@@ -16,7 +16,7 @@ import
 	ListingsItemSubmissionResponse,
 	PatchListingsItemQuery,
 	PutListingsItemQuery,
-} from "../types/amazon-selling-partner-api/listings-api/v2021-08-01.js";
+} from "../types/listings-api/v2021-08-01.js";
 
 //
 // Class

@@ -19,7 +19,7 @@ import
 	ReportDocument,
 	ReportSchedule,
 	ReportScheduleList,
-} from "../types/amazon-selling-partner-api/reports-api/v2021-06-30.js";
+} from "../types/reports-api/v2021-06-30.js";
 
 //
 // Class
