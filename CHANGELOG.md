@@ -1,5 +1,5 @@
 ## Version 2.1.0
-Added the `AmazonSellingPartnerAPlusContentAPIClient` class which provides API coverage for the v2020-11-01 of the [A+ Content API](https://developer-docs.amazon.com/sp-api/docs/selling-partner-api-for-a-content-management).
+Added the `AmazonSellingPartnerAPlusContentAPIClient` class which provides API coverage for v2020-11-01 of the [A+ Content API](https://developer-docs.amazon.com/sp-api/docs/selling-partner-api-for-a-content-management).
 
 ## Version 2.0.1
 Removed `luxon` as a dependency.
