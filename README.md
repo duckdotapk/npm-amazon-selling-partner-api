@@ -43,7 +43,7 @@ Documentation will be coming at a later date.
 This package has extensive type definitions which directly correspond to the [Official Documentation](https://developer-docs.amazon.com/sp-api/docs/what-is-the-selling-partner-api) as much as possible and those should be helpful in the meantime.
 
 ## Changelog
-See [CHANGELOG.md](https://github.com/duckdotapk/npm-paypal-api/blob/main/CHANGELOG.md)
+See [CHANGELOG.md](https://github.com/duckdotapk/npm-amazon-selling-partner-api/blob/main/CHANGELOG.md)
 
 ## License
 [MIT](https://github.com/duckdotapk/npm-amazon-selling-partner-api/blob/main/LICENSE.md)
