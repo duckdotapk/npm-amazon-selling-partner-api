@@ -1,3 +1,6 @@
+## Version 2.1.0
+Added the `AmazonSellingPartnerAPlusContentAPIClient` class which provides API coverage for the v2020-11-01 of the [A+ Content API](https://developer-docs.amazon.com/sp-api/docs/selling-partner-api-for-a-content-management).
+
 ## Version 2.0.1
 Removed `luxon` as a dependency.
 
@@ -5,7 +8,8 @@ I was using it because the project this was originally a component of had it but
 
 ## Version 2.0.0
 
-* **[Breaking Change]** Flattened the structure of the `types` folder a bit, removing the redundant `amazon-selling-partner-api` folder.
+* **[Breaking Change]
+  ** Flattened the structure of the `types` folder a bit, removing the redundant `amazon-selling-partner-api` folder.
 * Each file in the `types` folder is also not exported as an object to simplify imports.
 * Fixed the name of the file for the `AmazonSellingParterOrdersAPIClient` class.
 

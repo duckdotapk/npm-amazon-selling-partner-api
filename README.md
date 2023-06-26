@@ -8,7 +8,7 @@ This table illustrates which APIs and versions are currently covered by this pac
 
 | API Name                      | Version     | Status              |
 |-------------------------------|-------------|---------------------|
-| A+ Content API                | -           | Not yet implemented |
+| A+ Content API                | v2020-11-01 | Fully supported     |
 | Authorization API             | -           | Not yet implemented |
 | Catalog Items API             | -           | Not yet implemented |
 | Easy Ship API                 | -           | Not yet implemented |
