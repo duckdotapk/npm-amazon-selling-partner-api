@@ -21,9 +21,7 @@
   "author": "Loren Goodwin",
   "license": "MIT",
   "dependencies": {
-    "@types/luxon": "^3.3.0",
-    "@types/node": "^20.3.1",
-    "luxon": "^3.3.0"
+    "@types/node": "^20.3.1"
   },
   "devDependencies": {
     "@donutteam/eslint-config": "^2.0.0",

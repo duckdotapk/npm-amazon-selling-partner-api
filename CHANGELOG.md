@@ -1,3 +1,8 @@
+## Version 2.0.1
+Removed `luxon` as a dependency.
+
+I was using it because the project this was originally a component of had it but its so sparsely used in this code that I believe it is better to just use native Dates.
+
 ## Version 2.0.0
 
 * **[Breaking Change]** Flattened the structure of the `types` folder a bit, removing the redundant `amazon-selling-partner-api` folder.

@@ -6,8 +6,6 @@
 
 import crypto from "node:crypto";
 
-import { DateTime } from "luxon";
-
 //
 // Class
 //
@@ -140,7 +138,7 @@ export class AmazonSellingPartnerAPIClient
 		// Return Existing Token (if it's still valid)
 		//
 
-		if (this.accessToken != null && this.accessTokenExpiresTimestamp > DateTime.now().toSeconds())
+		if (this.accessToken != null && this.accessTokenExpiresTimestamp > (Date.now() / 1000))
 		{
 			return this.accessToken;
 		}
@@ -180,7 +178,7 @@ export class AmazonSellingPartnerAPIClient
 
 		this.accessToken = accessTokenResponse.access_token;
 
-		this.accessTokenExpiresTimestamp = DateTime.now().plus({ seconds: accessTokenResponse.expires_in }).toSeconds();
+		this.accessTokenExpiresTimestamp = (Date.now() / 1000) + accessTokenResponse.expires_in;
 
 		//
 		// Return Token
@@ -212,7 +210,7 @@ export class AmazonSellingPartnerAPIClient
 	/** Creates signed request headers for an AWS request. */
 	private async createSignedRequestHeaders(options : RequestOptions)
 	{
-		const dateTime = DateTime.now().toUTC().toFormat("yyyyMMdd'T'HHmmss'Z'");
+		const dateTime = formatDate(new Date());
 
 		const date = dateTime.substring(0, 8);
 
