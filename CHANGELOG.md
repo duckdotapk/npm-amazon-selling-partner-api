@@ -1,3 +1,8 @@
+## Version 2.1.2
+
+* Tweaked the package's tags.
+* Fixed export for the `AmazonSellingPartnerOrdersAPIClient` class.
+
 ## Version 2.1.1
 Changes to the package file, documentation and ignore files. No code changes.
 
