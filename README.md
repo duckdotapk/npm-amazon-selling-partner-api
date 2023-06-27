@@ -18,7 +18,7 @@ This table illustrates which APIs and versions are currently covered by this pac
 | Fulfillment Inbound API       | -           | Not yet implemented |
 | Fulfillment Outbound API      | -           | Not yet implemented |
 | Listings API                  | v2021-08-01 | Fully supported     |
-| Merchant Fulfillment API      | -           | Not yet implemented |
+| Merchant Fulfillment API      | v0          | Fully supported     |
 | Messaging API                 | -           | Not yet implemented |
 | Notifications API             | -           | Not yet implemented |
 | Orders API                    | v0          | Fully supported     |

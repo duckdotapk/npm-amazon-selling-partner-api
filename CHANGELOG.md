@@ -1,3 +1,6 @@
+## Version 2.2.1
+Updating README. No code changes.
+
 ## Version 2.2.0
 Added the `AmazonSellingPartnerMerchantFulfillmentAPIClient` class which provides API coverage for v0 of the [Merchant Fulfillment API](https://developer-docs.amazon.com/sp-api/docs/merchant-fulfillment-api-v0-reference).
 
