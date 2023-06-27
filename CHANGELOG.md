@@ -1,3 +1,6 @@
+## Version 2.3.0
+Added the `AmazonSellingPartnerUploadsAPIClient` class which provides API coverage for v2020-11-01 of the [Uploads API](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference).
+
 ## Version 2.2.1
 Updating README. No code changes.
 
