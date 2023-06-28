@@ -1,3 +1,6 @@
+## Version 2.3.3
+Fixing `OrdersAPI.GetOrdersQuery.MarketplaceIds` being optional.
+
 ## Version 2.3.2
 Fixed an issue where `formatDate` was not exported and also not imported within `AmazonSellingPartnerAPIClient`.
 

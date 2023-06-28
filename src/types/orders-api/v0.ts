@@ -243,7 +243,7 @@ export interface GetOrdersQueryInitial
 
 	OrderStatuses? : OrderStatus[];
 
-	MarketplaceIds? : string[];
+	MarketplaceIds : string[];
 
 	FulfillmentChannels? : FulfillmentChannel[];
 
