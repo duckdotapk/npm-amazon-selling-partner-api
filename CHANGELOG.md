@@ -1,3 +1,6 @@
+## Version 2.3.1
+Changed the package type to "module" like it was supposed to be all along.
+
 ## Version 2.3.0
 Added the `AmazonSellingPartnerUploadsAPIClient` class which provides API coverage for v2020-11-01 of the [Uploads API](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference).
 
