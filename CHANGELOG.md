@@ -1,3 +1,8 @@
+## Version 2.3.2
+Fixed an issue where `formatDate` was not exported and also not imported within `AmazonSellingPartnerAPIClient`.
+
+I have no idea how NOTHING caught this error.
+
 ## Version 2.3.1
 Changed the package type to "module" like it was supposed to be all along.
 
