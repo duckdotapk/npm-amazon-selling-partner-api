@@ -39,7 +39,7 @@ export interface RestrictedResource
 
 	path : string;
 
-	dataElements : RestrictedResourceDataElement[];
+	dataElements? : RestrictedResourceDataElement[];
 }
 
 // Note: Not a type in the docs but I think it's good to have it here.
