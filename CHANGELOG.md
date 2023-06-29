@@ -1,3 +1,10 @@
+## Version 2.4.0
+
+* Added an `accessToken` property to the `AmazonSellingPartnerAPIClient` class' `RequestOptions`.
+	* This allows you to override the access token when making a request.
+	* This is useful for using a Restricted Data Token for certain endpoints.
+* Added the `AmazonSellingPartnerTokensAPIClient` class which provides API coverage for v2021-03-01 of the [Tokens API](https://developer-docs.amazon.com/sp-api/docs/tokens-api-v2021-03-01-reference).
+
 ## Version 2.3.3
 Fixing `OrdersAPI.GetOrdersQuery.MarketplaceIds` being optional.
 
