@@ -64,6 +64,9 @@ export interface Options
 /** Options passed to a Client's connect method. */
 export interface RequestOptions
 {
+	/** An access token to use. You can use this to override the default access token, useful for accessing restricted data. */
+	accessToken? : string;
+
 	/** The HTTP method to use. */
 	method : "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 
@@ -216,7 +219,7 @@ export class AmazonSellingPartnerAPIClient
 
 		const date = dateTime.substring(0, 8);
 
-		const accessToken = await this.getAccessToken();
+		const accessToken = options.accessToken ?? await this.getAccessToken();
 
 		const headers : { [key : string] : string } =
 			{
