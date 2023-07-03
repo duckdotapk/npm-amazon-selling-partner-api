@@ -1,3 +1,6 @@
+## Version 2.4.2
+Updating README. No code changes.
+
 ## Version 2.4.1
 Fixed `dataElements` being required on `TokensAPI.RestrictedResource`.
 

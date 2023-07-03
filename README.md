@@ -32,7 +32,7 @@ This table illustrates which APIs and versions are currently covered by this pac
 | Shipment Invoicing API        | -           | Not yet implemented |
 | Shipping API                  | v1          | Fully supported     |
 | Solicitations API             | -           | Not yet implemented |
-| Tokens API                    | -           | Not yet implemented |
+| Tokens API                    | v2021-03-01 | Fully supported     |
 | Uploads API                   | v2020-11-01 | Fully supported     |
 | Vendor Direct Fulfillment API | -           | Not yet implemented |
 | Vendor Retail Procurement API | -           | Not yet implemented |
