@@ -122,7 +122,7 @@ export interface ConfirmShipmentRequest
 {
 	packageDetail : PackageDetail;
 
-	codCollectionMethod : CodCollectionMethod;
+	codCollectionMethod? : CodCollectionMethod;
 
 	marketplaceId : MarketplaceId;
 }

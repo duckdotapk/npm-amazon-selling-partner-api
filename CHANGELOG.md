@@ -1,3 +1,6 @@
+## Version 2.4.3
+Fixing `OrdersAPI.ConfirmShipmentRequest.codCollectionMethod` not being marked as optional.
+
 ## Version 2.4.2
 Updating README. No code changes.
 
