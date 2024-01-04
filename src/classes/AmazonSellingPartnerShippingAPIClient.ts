@@ -30,7 +30,7 @@ import
 /** A client for v1 of the Shipping endpoints of the Amazon Selling Partner API. */
 export class AmazonSellingPartnerShippingAPIClient
 {
-	private readonly amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
+	amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
 
 	constructor(amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient)
 	{

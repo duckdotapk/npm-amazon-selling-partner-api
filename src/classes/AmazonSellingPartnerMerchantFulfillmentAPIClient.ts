@@ -24,7 +24,7 @@ import
 /** A client for v0 of the Merchant Fulfillment endpoints of the Amazon Selling Partner API. */
 export class AmazonSellingPartnerMerchantFulfillmentAPIClient
 {
-	private readonly amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
+	amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
 
 	constructor(amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient)
 	{

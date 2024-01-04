@@ -20,7 +20,7 @@ export class AmazonSellingPartnerAPIError extends Error
 	 *
 	 * @param statusCode
 	 */
-	private static getErrorMessage(statusCode : number) : string
+	static getErrorMessage(statusCode : number) : string
 	{
 		switch (statusCode)
 		{
@@ -57,16 +57,16 @@ export class AmazonSellingPartnerAPIError extends Error
 	}
 
 	/** The status code of the response. */
-	public readonly statusCode : number;
+	readonly statusCode : number;
 
 	/** The x-amzn-RateLimit-Limit header of the response. */
-	public readonly rateLimit : string | null;
+	rateLimit : string | null;
 
 	/** The x-amzn-RequestId header of the response. */
-	public readonly requestId : string | null;
+	requestId : string | null;
 
 	/** The errors returned by the API. */
-	public readonly errors : ErrorLike[];
+	errors : ErrorLike[];
 
 	/**
 	 * Constructs a new AmazonSellingPartnerAPIError.

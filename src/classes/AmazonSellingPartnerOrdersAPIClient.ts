@@ -32,7 +32,7 @@ import
 /** A client for v0 of the Orders endpoints of the Amazon Selling Partner API. */
 export class AmazonSellingPartnerOrdersAPIClient
 {
-	private readonly amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
+	amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
 
 	constructor(amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient)
 	{

@@ -38,7 +38,7 @@ import
 /** A client for v2020-11-01 of the A+ Content endpoints of the Amazon Selling Partner API. */
 export class AmazonSellingPartnerAPlusContentAPIClient
 {
-	private readonly amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
+	amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
 
 	constructor(amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient)
 	{

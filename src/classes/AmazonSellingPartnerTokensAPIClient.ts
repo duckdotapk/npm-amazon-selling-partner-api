@@ -19,7 +19,7 @@ import
 /** A client for v2021-03-01 of the Tokens endpoints of the Amazon Selling Partner API. */
 export class AmazonSellingPartnerTokensAPIClient
 {
-	private readonly amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
+	amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
 
 	constructor(amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient)
 	{

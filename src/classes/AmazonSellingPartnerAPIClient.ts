@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-namespace */
-
 //
 // Imports
 //
@@ -84,34 +82,34 @@ export interface RequestOptions
 export class AmazonSellingPartnerAPIClient
 {
 	/** The refresh token from an Amazon Seller Central app. */
-	private readonly refreshToken : string;
+	refreshToken : string;
 
 	/** The client identifier from an Amazon Seller Central app. */
-	private readonly clientIdentifier : string;
+	clientIdentifier : string;
 
 	/** The client secret from an Amazon Seller Central app. */
-	private readonly clientSecret : string;
+	clientSecret : string;
 
 	/** The access key for the IAM user associated with the Amazon Seller Central app. */
-	private readonly iamUserAccessKey : string;
+	iamUserAccessKey : string;
 
 	/** The secret access key for the IAM user associated with the Amazon Seller Central app. */
-	private readonly iamUserSecretAccessKey : string;
+	iamUserSecretAccessKey : string;
 
 	/** The Amazon Seller Partner API Endpoint to use. */
-	private readonly apiEndpoint : string;
+	apiEndpoint : string;
 
 	/** The AWS region to use. */
-	private readonly awsRegion : string;
+	awsRegion : string;
 
 	/** The current access token. */
-	private accessToken : string | null;
+	accessToken : string | null;
 
 	/** A unix timestamp representing when the current access token expires. */
-	private accessTokenExpiresTimestamp : number;
+	accessTokenExpiresTimestamp : number;
 
 	/** Constructs a new client. */
-	public constructor(options : Options)
+	constructor(options : Options)
 	{
 		this.refreshToken = options.refreshToken;
 
@@ -137,7 +135,7 @@ export class AmazonSellingPartnerAPIClient
 	 *
 	 * @returns A promise that resolves to the access token.
 	 */
-	public async getAccessToken() : Promise<string>
+	async getAccessToken() : Promise<string>
 	{
 		//
 		// Return Existing Token (if it's still valid)
@@ -193,7 +191,7 @@ export class AmazonSellingPartnerAPIClient
 	}
 
 	/** Performs a request to the Selling Partner API. */
-	public async request(options : RequestOptions) : Promise<Response>
+	async request(options : RequestOptions) : Promise<Response>
 	{
 		const headers = await this.createSignedRequestHeaders(options);
 
@@ -213,7 +211,7 @@ export class AmazonSellingPartnerAPIClient
 	}
 
 	/** Creates signed request headers for an AWS request. */
-	private async createSignedRequestHeaders(options : RequestOptions)
+	async createSignedRequestHeaders(options : RequestOptions)
 	{
 		const dateTime = formatDate(new Date());
 
@@ -295,7 +293,7 @@ export class AmazonSellingPartnerAPIClient
 	}
 
 	/** Gets the signing key for a given date. */
-	private getSigningKey(date : string) : Buffer
+	getSigningKey(date : string) : Buffer
 	{
 		const kDate = crypto
 			.createHmac("sha256", "AWS4" + this.iamUserSecretAccessKey)

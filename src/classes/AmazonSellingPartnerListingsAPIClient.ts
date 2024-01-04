@@ -25,7 +25,7 @@ import
 /** A client for v2021-08-01 of the Listings endpoints of the Amazon Selling Partner API. */
 export class AmazonSellingPartnerListingsAPIClient
 {
-	private readonly amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
+	amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient;
 
 	constructor(amazonSellingPartnerApiClient : AmazonSellingPartnerAPIClient)
 	{
