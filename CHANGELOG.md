@@ -1,6 +1,9 @@
 ## Version 3.0.0
 
 * Everything is now public.
+* Renamed `AccessTokenResponse` to `AmazonSellingPartnerAPIClientAccessTokenResponse`.
+* Renamed `Options` to `AmazonSellingPartnerAPIClientOptions`.
+* Renamed `RequestOptions` to `AmazonSellingPartnerAPIClientRequestOptions`.
 
 ## Version 2.4.3
 Fixing `OrdersAPI.ConfirmShipmentRequest.codCollectionMethod` not being marked as optional.

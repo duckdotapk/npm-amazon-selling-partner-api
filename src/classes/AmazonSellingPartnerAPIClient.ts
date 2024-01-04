@@ -11,7 +11,7 @@ import { formatDate } from "../utilities/format-date.js";
 //
 
 /** A response from Amazon's OAuth2 endpoint. */
-export interface AccessTokenResponse
+export interface AmazonSellingPartnerAPIClientAccessTokenResponse
 {
 	/** The access token. */
 	access_token : string;
@@ -27,7 +27,7 @@ export interface AccessTokenResponse
 }
 
 /** Options passed to the Client constructor. */
-export interface Options
+export interface AmazonSellingPartnerAPIClientOptions
 {
 	/** A refresh token from an Amazon Seller Central app. */
 	refreshToken : string;
@@ -60,7 +60,7 @@ export interface Options
 }
 
 /** Options passed to a Client's connect method. */
-export interface RequestOptions
+export interface AmazonSellingPartnerAPIClientRequestOptions
 {
 	/** An access token to use. You can use this to override the default access token, useful for accessing restricted data. */
 	accessToken? : string;
@@ -109,7 +109,7 @@ export class AmazonSellingPartnerAPIClient
 	accessTokenExpiresTimestamp : number;
 
 	/** Constructs a new client. */
-	constructor(options : Options)
+	constructor(options : AmazonSellingPartnerAPIClientOptions)
 	{
 		this.refreshToken = options.refreshToken;
 
@@ -168,7 +168,7 @@ export class AmazonSellingPartnerAPIClient
 				body,
 			});
 
-		const accessTokenResponse = await rawAccessTokenResponse.json() as AccessTokenResponse;
+		const accessTokenResponse = await rawAccessTokenResponse.json() as AmazonSellingPartnerAPIClientAccessTokenResponse;
 
 		if (accessTokenResponse.access_token == null)
 		{
@@ -191,7 +191,7 @@ export class AmazonSellingPartnerAPIClient
 	}
 
 	/** Performs a request to the Selling Partner API. */
-	async request(options : RequestOptions) : Promise<Response>
+	async request(options : AmazonSellingPartnerAPIClientRequestOptions) : Promise<Response>
 	{
 		const headers = await this.createSignedRequestHeaders(options);
 
@@ -211,7 +211,7 @@ export class AmazonSellingPartnerAPIClient
 	}
 
 	/** Creates signed request headers for an AWS request. */
-	async createSignedRequestHeaders(options : RequestOptions)
+	async createSignedRequestHeaders(options : AmazonSellingPartnerAPIClientRequestOptions)
 	{
 		const dateTime = formatDate(new Date());
 
