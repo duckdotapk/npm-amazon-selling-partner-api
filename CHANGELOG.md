@@ -1,3 +1,11 @@
+## Version 4.0.0
+
+* Replaced `accessToken` and `accessTokenExpiresTimestamp` on `AmazonSellingPartnerAPIClient` with an array of `AmazonSellingPartnerAPIClientAccessToken` objects.
+	* This allows you to add a temporary restricted data token to the client and have it automatically used when making subsequent requests.
+* Renamed `getAccessToken` to `getCurrentAccessToken` from `AmazonSellingPartnerAPIClient`.
+	* It also now returns an `AmazonSellingPartnerAPIClientAccessToken` object instead of a string.
+* Added `addAccessToken` and `removeAccessToken` methods to `AmazonSellingPartnerAPIClient`.
+
 ## Version 3.0.0
 
 * Everything is now public.

@@ -10,6 +10,16 @@ import { formatDate } from "../utilities/format-date.js";
 // Class
 //
 
+/** An access token possessed by the client. */
+export interface AmazonSellingPartnerAPIClientAccessToken
+{
+	/** The access token. */
+	accessToken : string;
+
+	/** A unix timestamp representing when the access token expires. */
+	expiresTimestamp : number;
+}
+
 /** A response from Amazon's OAuth2 endpoint. */
 export interface AmazonSellingPartnerAPIClientAccessTokenResponse
 {
@@ -62,9 +72,6 @@ export interface AmazonSellingPartnerAPIClientOptions
 /** Options passed to a Client's connect method. */
 export interface AmazonSellingPartnerAPIClientRequestOptions
 {
-	/** An access token to use. You can use this to override the default access token, useful for accessing restricted data. */
-	accessToken? : string;
-
 	/** The HTTP method to use. */
 	method : "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 
@@ -102,11 +109,8 @@ export class AmazonSellingPartnerAPIClient
 	/** The AWS region to use. */
 	awsRegion : string;
 
-	/** The current access token. */
-	accessToken : string | null;
-
-	/** A unix timestamp representing when the current access token expires. */
-	accessTokenExpiresTimestamp : number;
+	/** The current access tokens this client has. */
+	accessTokens : AmazonSellingPartnerAPIClientAccessToken[];
 
 	/** Constructs a new client. */
 	constructor(options : AmazonSellingPartnerAPIClientOptions)
@@ -125,9 +129,32 @@ export class AmazonSellingPartnerAPIClient
 
 		this.awsRegion = options.awsRegion;
 
-		this.accessToken = null;
+		this.accessTokens = [];
+	}
 
-		this.accessTokenExpiresTimestamp = 0;
+	/**
+	 * Adds an access token to the client.
+	 *
+	 * This is intended to be used to add a restricted data token.
+	 */
+	addAccessToken(accessToken : AmazonSellingPartnerAPIClientAccessToken) : AmazonSellingPartnerAPIClientAccessToken
+	{
+		this.accessTokens.unshift(accessToken);
+
+		return accessToken;
+	}
+
+	/** Removes an access token from the client, if it is still present. */
+	removeAccessToken(accessToken : AmazonSellingPartnerAPIClientAccessToken) : void
+	{
+		const index = this.accessTokens.indexOf(accessToken);
+
+		if (index === -1)
+		{
+			return;
+		}
+
+		this.accessTokens.splice(index, 1);
 	}
 
 	/**
@@ -135,15 +162,22 @@ export class AmazonSellingPartnerAPIClient
 	 *
 	 * @returns A promise that resolves to the access token.
 	 */
-	async getAccessToken() : Promise<string>
+	async getCurrentAccessToken() : Promise<AmazonSellingPartnerAPIClientAccessToken>
 	{
 		//
-		// Return Existing Token (if it's still valid)
+		// Try Existing Tokens
 		//
 
-		if (this.accessToken != null && this.accessTokenExpiresTimestamp > (Date.now() / 1000))
+		while (this.accessTokens[0] != null)
 		{
-			return this.accessToken;
+			const accessToken = this.accessTokens[0];
+
+			if (accessToken.expiresTimestamp > (Date.now() / 1000))
+			{
+				return accessToken;
+			}
+
+			this.accessTokens.shift();
 		}
 
 		//
@@ -176,18 +210,14 @@ export class AmazonSellingPartnerAPIClient
 		}
 
 		//
-		// Set Token & Expires Timestamp
+		// Add & Return Access Token
 		//
 
-		this.accessToken = accessTokenResponse.access_token;
-
-		this.accessTokenExpiresTimestamp = (Date.now() / 1000) + accessTokenResponse.expires_in;
-
-		//
-		// Return Token
-		//
-
-		return this.accessToken;
+		return this.addAccessToken(
+			{
+				accessToken: accessTokenResponse.access_token,
+				expiresTimestamp: (Date.now() / 1000) + accessTokenResponse.expires_in,
+			});
 	}
 
 	/** Performs a request to the Selling Partner API. */
@@ -202,7 +232,7 @@ export class AmazonSellingPartnerAPIClient
 			uri += "?" + options.searchParams.toString();
 		}
 
-		return fetch(uri,
+		return await fetch(uri,
 			{
 				method: options.method,
 				headers,
@@ -217,13 +247,13 @@ export class AmazonSellingPartnerAPIClient
 
 		const date = dateTime.substring(0, 8);
 
-		const accessToken = options.accessToken ?? await this.getAccessToken();
+		const accessToken = await this.getCurrentAccessToken();
 
 		const headers : { [key : string] : string } =
 			{
 				"host": new URL(this.apiEndpoint).hostname,
 				"user-agent": "Amazon SP API Node.js Client",
-				"x-amz-access-token": accessToken, // Note: This is case-sensitive for some goddamn reason
+				"x-amz-access-token": accessToken.accessToken, // Note: This is case-sensitive for some goddamn reason
 				"x-amz-date": dateTime, // Note: This one ISN'T (???) but I am lower casing it for consistency
 			};
 
