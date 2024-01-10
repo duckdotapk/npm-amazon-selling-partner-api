@@ -1,6 +1,6 @@
 {
 	"name": "@lorenstuff/amazon-selling-partner-api",
-	"version": "3.0.0",
+	"version": "4.0.0",
 	"description": "A package for interacting with the Amazon Selling Partner API.",
 	"homepage": "https://github.com/duckdotapk/npm-amazon-selling-partner-api",
 	"main": "./lib/index.js",
