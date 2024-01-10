@@ -6,8 +6,6 @@
 	"main": "./lib/index.js",
 	"scripts": {
 		"build": "npx rimraf lib && npx tsc",
-		"lint": "eslint . -c ./.eslintrc.cjs",
-		"lint-fix": "eslint . -c ./.eslintrc.cjs --fix",
 		"prepublishOnly": "npm run build"
 	},
 	"keywords": [
@@ -24,8 +22,6 @@
 	},
 	"type": "module",
 	"devDependencies": {
-		"@donutteam/eslint-config": "^2.0.0",
-		"eslint": "^8.43.0",
 		"rimraf": "^5.0.1",
 		"typescript": "^5.1.3"
 	}

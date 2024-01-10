@@ -1,3 +1,6 @@
+## Version 4.0.1
+Removed eslint.
+
 ## Version 4.0.0
 
 * Replaced `accessToken` and `accessTokenExpiresTimestamp` on `AmazonSellingPartnerAPIClient` with an array of `AmazonSellingPartnerAPIClientAccessToken` objects.
