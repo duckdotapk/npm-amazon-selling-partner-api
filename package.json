@@ -18,6 +18,7 @@
 	"author": "Loren Goodwin",
 	"license": "MIT",
 	"dependencies": {
+		"@donutteam/typescript-config": "^1.0.0",
 		"@types/node": "^20.3.1"
 	},
 	"type": "module",
