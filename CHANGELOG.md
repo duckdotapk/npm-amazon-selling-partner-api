@@ -1,10 +1,8 @@
-## Version 4.0.2
+## Version 4.0.1
 
+* Removed eslint.
 * The TypeScript configuration is now based on `@donutteam/typescript-config`.
 * Updated dependencies.
-
-## Version 4.0.1
-Removed eslint.
 
 ## Version 4.0.0
 
