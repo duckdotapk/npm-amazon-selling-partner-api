@@ -18,12 +18,12 @@
 	"author": "Loren Goodwin",
 	"license": "MIT",
 	"dependencies": {
-		"@donutteam/typescript-config": "^1.0.0",
-		"@types/node": "^20.12.11"
+		"@lorenstuff/typescript-config": "^2.0.0",
+		"@types/node": "^24.0.3"
 	},
 	"type": "module",
 	"devDependencies": {
-		"rimraf": "^5.0.7",
-		"typescript": "^5.4.5"
+		"rimraf": "^6.0.1",
+		"typescript": "^5.8.3"
 	}
 }

@@ -43,7 +43,7 @@ export class AmazonSellingPartnerMerchantFulfillmentAPIClient
 
 		if ("errors" in responseData)
 		{
-			throw new AmazonSellingPartnerAPIError(response, responseData.errors);
+			throw new AmazonSellingPartnerAPIError(response, responseData.errors ?? []);
 		}
 
 		return responseData;
@@ -61,7 +61,7 @@ export class AmazonSellingPartnerMerchantFulfillmentAPIClient
 
 		if ("errors" in responseData)
 		{
-			throw new AmazonSellingPartnerAPIError(response, responseData.errors);
+			throw new AmazonSellingPartnerAPIError(response, responseData.errors ?? []);
 		}
 
 		return responseData;
@@ -80,7 +80,7 @@ export class AmazonSellingPartnerMerchantFulfillmentAPIClient
 
 		if ("errors" in responseData)
 		{
-			throw new AmazonSellingPartnerAPIError(response, responseData.errors);
+			throw new AmazonSellingPartnerAPIError(response, responseData.errors ?? []);
 		}
 
 		return responseData;
@@ -99,7 +99,7 @@ export class AmazonSellingPartnerMerchantFulfillmentAPIClient
 
 		if ("errors" in responseData)
 		{
-			throw new AmazonSellingPartnerAPIError(response, responseData.errors);
+			throw new AmazonSellingPartnerAPIError(response, responseData.errors ?? []);
 		}
 
 		return responseData;
@@ -118,7 +118,7 @@ export class AmazonSellingPartnerMerchantFulfillmentAPIClient
 
 		if ("errors" in responseData)
 		{
-			throw new AmazonSellingPartnerAPIError(response, responseData.errors);
+			throw new AmazonSellingPartnerAPIError(response, responseData.errors ?? []);
 		}
 
 		return responseData;
@@ -137,7 +137,7 @@ export class AmazonSellingPartnerMerchantFulfillmentAPIClient
 
 		if ("errors" in responseData)
 		{
-			throw new AmazonSellingPartnerAPIError(response, responseData.errors);
+			throw new AmazonSellingPartnerAPIError(response, responseData.errors ?? []);
 		}
 
 		return responseData;
@@ -156,7 +156,7 @@ export class AmazonSellingPartnerMerchantFulfillmentAPIClient
 
 		if ("errors" in responseData)
 		{
-			throw new AmazonSellingPartnerAPIError(response, responseData.errors);
+			throw new AmazonSellingPartnerAPIError(response, responseData.errors ?? []);
 		}
 
 		return responseData;
@@ -174,7 +174,7 @@ export class AmazonSellingPartnerMerchantFulfillmentAPIClient
 
 		if ("errors" in responseData)
 		{
-			throw new AmazonSellingPartnerAPIError(response, responseData.errors);
+			throw new AmazonSellingPartnerAPIError(response, responseData.errors ?? []);
 		}
 
 		return responseData;

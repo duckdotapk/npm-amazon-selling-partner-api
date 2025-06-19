@@ -1,3 +1,7 @@
+## Version 4.0.2
+
+* chore: updated packages
+
 ## Version 4.0.1
 
 * Removed eslint.
