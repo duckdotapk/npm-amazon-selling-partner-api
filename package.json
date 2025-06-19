@@ -1,6 +1,6 @@
 {
 	"name": "@lorenstuff/amazon-selling-partner-api",
-	"version": "4.0.2",
+	"version": "4.0.3",
 	"description": "A package for interacting with the Amazon Selling Partner API.",
 	"author": "Loren Goodwin",
 	"license": "MIT",
