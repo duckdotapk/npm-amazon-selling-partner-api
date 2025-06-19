@@ -177,12 +177,9 @@ export interface PatchListingsItemQuery
 
 export interface PatchOperation
 {
-	op : Op;
-
-	path : string;
-
-	// TODO: Not sure if "string" is the right type for the values here.
-	value : { [key : string] : string }[];
+	op: Op;
+	path: string;
+	value: { [key: string]: any }[];
 }
 
 export interface Points
