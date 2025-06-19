@@ -1,3 +1,7 @@
+## Version 4.0.3
+
+* fix: fixed build folder not being included
+
 ## Version 4.0.2
 
 * chore: updated packages
