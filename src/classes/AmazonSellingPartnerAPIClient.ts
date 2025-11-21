@@ -2,8 +2,6 @@
 // Imports
 //
 
-import crypto from "node:crypto";
-
 import { formatDate } from "../utilities/format-date.js";
 
 //
@@ -48,10 +46,10 @@ export interface AmazonSellingPartnerAPIClientOptions
 	/** A client secret from an Amazon Seller Central app. */
 	clientSecret : string;
 
-	/** An access key for the IAM user associated with the Amazon Seller Central app. */
+	/** @deprecated No longer used. */
 	iamUserAccessKey : string;
 
-	/** A secret access key for the IAM user associated with the Amazon Seller Central app. */
+	/** @deprecated No longer used. */
 	iamUserSecretAccessKey : string;
 
 	/**
@@ -97,12 +95,6 @@ export class AmazonSellingPartnerAPIClient
 	/** The client secret from an Amazon Seller Central app. */
 	clientSecret : string;
 
-	/** The access key for the IAM user associated with the Amazon Seller Central app. */
-	iamUserAccessKey : string;
-
-	/** The secret access key for the IAM user associated with the Amazon Seller Central app. */
-	iamUserSecretAccessKey : string;
-
 	/** The Amazon Seller Partner API Endpoint to use. */
 	apiEndpoint : string;
 
@@ -120,10 +112,6 @@ export class AmazonSellingPartnerAPIClient
 		this.clientIdentifier = options.clientIdentifier;
 
 		this.clientSecret = options.clientSecret;
-
-		this.iamUserAccessKey = options.iamUserAccessKey;
-
-		this.iamUserSecretAccessKey = options.iamUserSecretAccessKey;
 
 		this.apiEndpoint = options.apiEndpoint;
 
@@ -221,9 +209,18 @@ export class AmazonSellingPartnerAPIClient
 	}
 
 	/** Performs a request to the Selling Partner API. */
-	async request(options : AmazonSellingPartnerAPIClientRequestOptions) : Promise<Response>
+	async request(options: AmazonSellingPartnerAPIClientRequestOptions): Promise<Response>
 	{
-		const headers = await this.createSignedRequestHeaders(options);
+		const accessToken = await this.getCurrentAccessToken();
+
+		const dateTime = formatDate(new Date());
+
+		const headers = new Headers();
+		
+		headers.set("host", this.apiEndpoint);
+		headers.set("user-agent", "Amazon SP API Node.js Client");
+		headers.set("x-amz-access-token", accessToken.accessToken);
+		headers.set("x-amz-date", dateTime);
 
 		let uri = this.apiEndpoint + options.path;
 
@@ -233,111 +230,11 @@ export class AmazonSellingPartnerAPIClient
 		}
 
 		return await fetch(uri,
-			{
-				method: options.method,
-				headers,
-				body: options.body ?? null,
-			});
-	}
-
-	/** Creates signed request headers for an AWS request. */
-	async createSignedRequestHeaders(options : AmazonSellingPartnerAPIClientRequestOptions)
-	{
-		const dateTime = formatDate(new Date());
-
-		const date = dateTime.substring(0, 8);
-
-		const accessToken = await this.getCurrentAccessToken();
-
-		const headers : { [key : string] : string } =
-			{
-				"host": new URL(this.apiEndpoint).hostname,
-				"user-agent": "Amazon SP API Node.js Client",
-				"x-amz-access-token": accessToken.accessToken, // Note: This is case-sensitive for some goddamn reason
-				"x-amz-date": dateTime, // Note: This one ISN'T (???) but I am lower casing it for consistency
-			};
-
-		if (options.body != null)
 		{
-			headers["content-type"] = "application/json";
-		}
-
-		const canonicalHeaders = Object.entries(headers)
-			.sort(([ a ], [ b ]) => a.localeCompare(b))
-			.map(([ k, v ]) => `${ k.toLowerCase() }:${ (v as string).trim() }\n`)
-			.join("");
-
-		const signedHeaderNames = Object.keys(headers)
-			.map((k) => k.toLowerCase())
-			.sort()
-			.join(";");
-
-		const hashedPayload = crypto
-			.createHash("sha256")
-			.update(options.body ?? "")
-			.digest("hex");
-
-		const canonicalQueryParams = Array.from(options.searchParams ?? new URLSearchParams())
-			.sort(([ a ], [ b ]) => a.localeCompare(b))
-			.map(([ key, value ]) => `${ encodeURIComponent(key) }=${ encodeURIComponent(value) }`)
-			.join("&");
-
-		const canonicalRequest =
-			[
-				options.method,
-				options.path,
-				canonicalQueryParams,
-				canonicalHeaders,
-				signedHeaderNames,
-				hashedPayload,
-			].join("\n");
-
-		const credentialScope =
-			[
-				date,
-				this.awsRegion,
-				"execute-api",
-				"aws4_request",
-			].join("/");
-
-		const stringToSign =
-			[
-				"AWS4-HMAC-SHA256",
-				dateTime,
-				credentialScope,
-				crypto.createHash("sha256").update(canonicalRequest).digest("hex"),
-			].join("\n");
-
-		const signingKey = this.getSigningKey(date);
-
-		const signature = crypto
-			.createHmac("sha256", signingKey)
-			.update(stringToSign)
-			.digest("hex");
-
-		headers["Authorization"] =
-			`AWS4-HMAC-SHA256 Credential=${ this.iamUserAccessKey }/${ credentialScope },` +
-			`SignedHeaders=${ signedHeaderNames },Signature=${ signature }`;
-
-		return headers;
-	}
-
-	/** Gets the signing key for a given date. */
-	getSigningKey(date : string) : Buffer
-	{
-		const kDate = crypto
-			.createHmac("sha256", "AWS4" + this.iamUserSecretAccessKey)
-			.update(date)
-			.digest();
-
-		const kRegion = crypto.createHmac("sha256", kDate).update(this.awsRegion).digest();
-
-		const kService = crypto.createHmac("sha256", kRegion).update("execute-api").digest();
-
-		return crypto
-			.createHmac("sha256", kService)
-			.update("aws4_request")
-			.digest();
+			method: options.method,
+			headers,
+			body: options.body ?? null,
+		});
 	}
 }
 
