@@ -10,9 +10,15 @@
 		"@types/node": "^24.0.3"
 	},
 	"devDependencies": {
+		"@eslint/js": "^9.39.1",
 		"@lorenstuff/typescript-config": "^2.0.0",
+		"@stylistic/eslint-plugin": "^5.6.1",
+		"eslint": "^9.39.1",
+		"globals": "^16.5.0",
+		"jiti": "^2.6.1",
 		"rimraf": "^6.0.1",
-		"typescript": "^5.8.3"
+		"typescript": "^5.8.3",
+		"typescript-eslint": "^8.47.0"
 	},
 	"scripts": {
 		"build": "npx rimraf build && npx tsc",
